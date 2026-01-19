@@ -73,7 +73,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. 資料庫 (Unit 31: 18個單字 - 構詞與移動) ---
+# --- 2. 資料庫 (Unit 31: 18個單字 - User Fix) ---
 vocab_data = [
     {"amis": "Romakat", "chi": "走 (正在走)", "icon": "🚶", "source": "Row 482", "morph": "Rakat + om"},
     {"amis": "Comikay", "chi": "跑 (正在跑)", "icon": "🏃", "source": "Row 983", "morph": "Cikay + om"},
@@ -84,8 +84,8 @@ vocab_data = [
     {"amis": "Pakacowa", "chi": "經由哪裡", "icon": "🛤️", "source": "Row 726", "morph": "Paka-Cowa"},
     {"amis": "Kicowa", "chi": "從哪裡 / 置於哪", "icon": "📍", "source": "Row 725", "morph": "Ki-Cowa"},
     {"amis": "To'eman", "chi": "天黑 / 黑暗", "icon": "🌑", "source": "Row 525", "morph": "State"},
-    {"amis": "Korakorsa", "chi": "趕緊 / 快步", "icon": "💨", "source": "Row 525", "morph": "Adverb"},
-    {"amis": "Dimata'", "chi": "挑 / 扛 (肩挑)", "icon": "🏋️", "source": "Row 447", "morph": "Verb"},
+    {"amis": "Korakorsa", "chi": "就慢跑", "icon": "🏃‍♂️", "source": "User Fix", "morph": "Adverb"}, # 修正
+    {"amis": "Dimata'", "chi": "挑 / 扛 (詞根)", "icon": "🏋️", "source": "User Fix", "morph": "Root"}, # 修正
     {"amis": "Misahalifet", "chi": "比賽 / 使勁", "icon": "🏁", "source": "Row 983", "morph": "Misa-Ha-Lifet"},
     {"amis": "Fafaed", "chi": "上面 / 表面", "icon": "⬆️", "source": "Row 734", "morph": "Locative"},
     {"amis": "Tala", "chi": "前往 / 達到", "icon": "👉", "source": "Row 734", "morph": "Direction"},
@@ -99,7 +99,7 @@ vocab_data = [
 sentences = [
     {"amis": "Mingataay ciira takowanan a romakat.", "chi": "他正往我這邊走來。", "icon": "🚶", "source": "Row 482"},
     {"amis": "Misahalifet kami a comikay i cairaan.", "chi": "我們使勁地跟他們賽跑。", "icon": "🏃", "source": "Row 983"},
-    {"amis": "To'emanto ko romi'ad, korakorsa a minokay.", "chi": "天黑了，就快步走回家。", "icon": "🌑", "source": "Row 525"},
+    {"amis": "To'emanto ko romi'ad, korakorsa a minokay.", "chi": "天黑了，就慢跑回家。", "icon": "🌑", "source": "Row 525 (Trans. Updated)"},
     {"amis": "O tatayra kita i Taypak.", "chi": "我們將去台北。", "icon": "🚅", "source": "Row 340"},
     {"amis": "Pasicowaen koni a fawahan? Pasitimolen.", "chi": "這道門要朝向哪裡？要朝向南邊。", "icon": "🚪", "source": "Row 731"},
     {"amis": "Pakacowa ko kapah no niyaro' a minokay?", "chi": "部落的年輕人經由哪裡回家？", "icon": "🛤️", "source": "Row 726"},
@@ -115,7 +115,21 @@ raw_quiz_pool = [
         "audio": "To'emanto ko romi'ad, korakorsa a",
         "options": ["Minokay (回家)", "Comikay (跑)", "Romakat (走)"],
         "ans": "Minokay (回家)",
-        "hint": "Row 525: 天黑了趕緊回家"
+        "hint": "Row 525: 天黑了就慢跑回家"
+    },
+    {
+        "q": "單字測驗：Korakorsa",
+        "audio": "Korakorsa",
+        "options": ["就慢跑", "就睡覺", "就吃飯"],
+        "ans": "就慢跑",
+        "hint": "User Fix: Korakorsa"
+    },
+    {
+        "q": "單字測驗：Dimata'",
+        "audio": "Dimata'",
+        "options": ["挑/扛 (詞根)", "推 (詞根)", "拉 (詞根)"],
+        "ans": "挑/扛 (詞根)",
+        "hint": "用肩膀做的事"
     },
     {
         "q": "Pasicowaen koni a fawahan?",
@@ -137,13 +151,6 @@ raw_quiz_pool = [
         "options": ["經由哪裡", "朝向哪裡", "從哪裡"],
         "ans": "經由哪裡",
         "hint": "Paka- (經由/路過)"
-    },
-    {
-        "q": "Misahalifet kami a comikay.",
-        "audio": "Misahalifet kami a comikay",
-        "options": ["我們努力賽跑", "我們慢慢走", "我們不想跑"],
-        "ans": "我們努力賽跑",
-        "hint": "Misahalifet (比賽/使勁)"
     }
 ]
 
@@ -167,7 +174,7 @@ if 'init' not in st.session_state:
 
 # --- 5. 主介面 ---
 st.markdown("<h1 style='text-align: center; color: #512DA8;'>Unit 31: O Rakat</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #666;'>移動與方向 (Movement & Direction)</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #666;'>移動與方向 (User Corrected)</p>", unsafe_allow_html=True)
 
 tab1, tab2 = st.tabs(["📚 詞彙與句型", "🎲 隨機挑戰"])
 
